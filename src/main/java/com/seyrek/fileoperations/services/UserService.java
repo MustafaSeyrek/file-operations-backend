@@ -2,7 +2,6 @@ package com.seyrek.fileoperations.services;
 
 import com.seyrek.fileoperations.entities.User;
 import com.seyrek.fileoperations.repositories.UserRepository;
-import lombok.AllArgsConstructor;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
@@ -50,7 +49,7 @@ public class UserService {
         }
     }
 
-    public User getOneUserByUserName(String userName) {
+    public User getOneUserByUsername(String userName) {
         return userRepository.findByUsername(userName);
     }
 

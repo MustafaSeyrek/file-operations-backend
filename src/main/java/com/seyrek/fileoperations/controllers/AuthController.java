@@ -12,10 +12,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/auth")
@@ -45,7 +42,7 @@ public class AuthController {
         Authentication auth = authenticationManager.authenticate(authToken);
         SecurityContextHolder.getContext().setAuthentication(auth);
         String jwtToken = jwtTokenProvider.generateJwtToken(auth);
-        User user = userService.getOneUserByUserName(loginRequest.getUsername());
+        User user = userService.getOneUserByUsername(loginRequest.getUsername());
         AuthResponse authResponse = new AuthResponse();
         authResponse.setAccessToken("Bearer " + jwtToken);
         authResponse.setUserId(user.getId());
@@ -55,8 +52,8 @@ public class AuthController {
     @PostMapping("/register")
     public ResponseEntity<AuthResponse> register(@RequestBody UserRequest registerRequest) {
         AuthResponse authResponse = new AuthResponse();
-        if(userService.getOneUserByUserName(registerRequest.getUsername()) != null) {
-            authResponse.setMessage("Username already in use.");
+        if(userService.getOneUserByUsername(registerRequest.getUsername()) != null) {
+            authResponse.setMessage("Username already in use!");
             return new ResponseEntity<>(authResponse, HttpStatus.BAD_REQUEST);
         }
 
