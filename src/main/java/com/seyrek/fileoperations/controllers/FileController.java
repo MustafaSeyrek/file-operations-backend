@@ -33,6 +33,7 @@ public class FileController {
                     .path(String.valueOf(db.getId()))
                     .toUriString();
             return new FileResponse(
+                    db.getId(),
                     fileDownloadUri,
                     db.getName(),
                     db.getSize(),

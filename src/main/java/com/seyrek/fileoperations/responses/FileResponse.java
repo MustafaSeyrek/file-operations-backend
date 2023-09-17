@@ -6,6 +6,8 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class FileResponse {
+    Long id;
+
     String path;
 
     String name;
