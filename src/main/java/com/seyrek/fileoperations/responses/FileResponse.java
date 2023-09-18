@@ -8,11 +8,13 @@ import lombok.Data;
 public class FileResponse {
     Long id;
 
-    String path;
+    String code;
 
     String name;
 
     Long size;
 
     String type;
+
+    String path;
 }

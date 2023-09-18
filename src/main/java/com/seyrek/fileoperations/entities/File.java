@@ -16,7 +16,7 @@ public class File {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    String path;
+    String code;
 
     String name;
 
@@ -24,7 +24,6 @@ public class File {
 
     String type;
 
-    @Lob
-    @Column( length = 5000000 )
-    byte[] data;
+    String path;
+
 }
